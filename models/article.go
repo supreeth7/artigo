@@ -24,6 +24,20 @@ func (a *Article) Create(db *database.Database) (*mongo.InsertOneResult, error) 
 	return db.Collection.InsertOne(context.TODO(), a)
 }
 
+// GetByID returns the record for the given ID
+func (a *Article) GetByID(id string, db *database.Database) error {
+	objID, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		return err
+	}
+
+	filter := bson.M{
+		"_id": objID,
+	}
+
+	return db.Collection.FindOne(context.TODO(), filter).Decode(a)
+}
+
 // GetArticles fetches all the records from the collection
 func Get(db *database.Database) ([]Article, error) {
 	var articles []Article
@@ -44,18 +58,4 @@ func Get(db *database.Database) ([]Article, error) {
 	}
 
 	return articles, nil
-}
-
-// GetByID returns the record for the given ID
-func (a *Article) GetByID(id string, db *database.Database) error {
-	objID, err := primitive.ObjectIDFromHex(id)
-	if err != nil {
-		return err
-	}
-
-	filter := bson.M{
-		"_id": objID,
-	}
-
-	return db.Collection.FindOne(context.TODO(), filter).Decode(a)
 }
