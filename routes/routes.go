@@ -9,4 +9,6 @@ func Register(router *gin.Engine) {
 	router.GET("/articles/:id", handlers.GetArticleByID)
 	router.GET("/articles", handlers.GetArticles)
 	router.POST("/articles", handlers.CreateArticle)
+	router.PUT("/articles/:id", handlers.UpdateArticle)
+	router.DELETE("/articles/:id", handlers.DeleteArticle)
 }

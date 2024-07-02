@@ -10,6 +10,9 @@ import (
 
 func main() {
 	server := gin.Default()
+	server.ForwardedByClientIP = true
+	server.SetTrustedProxies([]string{"127.0.0.1"})
+
 	routes.Register(server)
 
 	// Initialize database connection
