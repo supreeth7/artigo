@@ -47,7 +47,7 @@ func Init() (err error) {
 
 	DB.Collection = DB.Client.Database(DB.name).Collection("articles")
 
-	log.Println("Successfully to database.")
+	log.Println("Successfully connected to database.")
 	return nil
 }
 

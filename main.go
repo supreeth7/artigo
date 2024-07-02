@@ -18,6 +18,8 @@ func main() {
 
 	defer database.Close()
 
+	r.GET("/articles/:id", handlers.GetArticleByID)
+	r.GET("/articles", handlers.GetArticles)
 	r.POST("/articles", handlers.CreateArticle)
 
 	err := r.Run()
