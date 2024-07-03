@@ -7,7 +7,6 @@ import (
 	"os"
 	"time"
 
-	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -22,10 +21,6 @@ var DB Database
 
 // Init initializes the mongoDB connection
 func Init() (err error) {
-	if err = godotenv.Load(); err != nil {
-		return errors.New(".env file is missing")
-	}
-
 	uri := os.Getenv("MONGO_URI")
 	if uri == "" {
 		return errors.New("please set the MONGO_URI environment variable")

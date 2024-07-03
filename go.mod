@@ -4,11 +4,15 @@ go 1.22.3
 
 require (
 	github.com/gin-gonic/gin v1.10.0
+	github.com/gwatts/gin-adapter v1.0.0
 	github.com/joho/godotenv v1.5.1
 	go.mongodb.org/mongo-driver v1.16.0
 )
 
+require gopkg.in/go-jose/go-jose.v2 v2.6.1 // indirect
+
 require (
+	github.com/auth0/go-jwt-middleware/v2 v2.2.0
 	github.com/bytedance/sonic v1.11.9 // indirect
 	github.com/bytedance/sonic/loader v0.1.1 // indirect
 	github.com/cloudwego/base64x v0.1.4 // indirect
